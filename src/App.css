@@ -194,6 +194,7 @@ button:focus {
   text-align: center;
   box-shadow: 0px 0px 12px -5px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
+  margin-bottom: 20px;
 }
 .miqaatDetails-date {
   display: flex;
@@ -223,6 +224,7 @@ button:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: 0.5s;
   padding-left: 12px;
 }
 .helper p {
@@ -242,7 +244,23 @@ button:focus {
   background: rgba(134, 159, 178, 0.1);
 }
 .helper.hide {
-  visibility: hidden;
+  transform: translateY(80px);
+}
+
+.fetching {
+  height: 40px;
+  width: 200px;
+  background: var(--dark-secondary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  transition: 0.5s;
+  color: #fff;
+}
+.fetching.hide {
+  transform: translateY(150px);
 }
 
 /* Dark  */

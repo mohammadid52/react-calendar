@@ -3,7 +3,6 @@ import { filter, find, map } from "lodash";
 import React, { useEffect, useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { BiReset } from "react-icons/bi";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import hijriCalendar from "../lib/datetime/calendar";
 import HijriDate from "../lib/datetime/hijri_date";
 import ArabicNumerals from "../lib/datetime/arabic_numerals";
@@ -43,6 +42,8 @@ const Calendar = ({ dark, setDark }) => {
   const momentDate = moment();
   const [showHijri, setShowHijri] = useState(false);
   const [miqaats, setMiqaats] = useState([]);
+
+  const fetching = miqaats.length === 0;
 
   const getMiqaats = async () => {
     const data = await network.post("data");
@@ -194,9 +195,16 @@ const Calendar = ({ dark, setDark }) => {
           <p>Click on date to see miqaat details</p>
         )}
       </div>
+
       <div className={`helper ${showHelper ? "show" : "hide"}`}>
-        <p>use key arrows to change months</p>
-        <button onClick={() => setShowHelper(false)}>close</button>
+        {fetching ? (
+          <p>Fetching miqaats...</p>
+        ) : (
+          <>
+            <p>use key arrows to change months</p>
+            <button onClick={() => setShowHelper(false)}>close</button>
+          </>
+        )}
       </div>
     </div>
   );
