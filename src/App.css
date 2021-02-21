@@ -1,0 +1,427 @@
+:root {
+  --red: #ff577f;
+  --dark-primary: #16213e;
+  --dark-secondary: #1f4068;
+  --light-text: #d1d8dd;
+  --dark-text: #9598a7;
+  --transition: 0.3s;
+}
+
+.App {
+  background: #fafafa;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  width: 100vw;
+}
+
+.Calendar-card {
+  background: #fff;
+  width: 1000px;
+  padding: 32px 24px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 12px -5px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  padding-bottom: 12px;
+}
+button {
+  outline-offset: 5px;
+}
+
+button:focus {
+  outline: 1px solid var(--light-text);
+  outline-offset: 5px;
+}
+
+.Calendar-card .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.Calendar-card .header-left h1 {
+  font-weight: 600;
+  user-select: none;
+  font-size: 24px;
+  transition: var(--transition);
+}
+.Calendar-card .header-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-right .btn {
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  background: var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 25px;
+  transition: var(--transition);
+}
+
+.header-right .btn:hover {
+  transform: scale(1.1);
+}
+
+.header-right .icon-left {
+  margin-right: 12px;
+}
+.header-right .icon-reset {
+  background: transparent;
+  color: var(--dark-text);
+  margin-left: 32px;
+}
+
+.header-right .icon-reset:focus {
+  transform: rotate(-45deg);
+}
+
+.weekLetters {
+  margin: 12px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.weekLetters div {
+  width: 30px;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.date {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 12px 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  padding: 12px;
+}
+.date:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.date p {
+  position: relative;
+  border-radius: 100px;
+  align-items: center;
+  color: #9598a7;
+  transition: var(--transition);
+  user-select: none;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.date.filler p {
+  transition: var(--transition);
+  color: #d1d8dd;
+  font-weight: 400;
+}
+
+.date.today {
+  background: var(--red);
+}
+.date.today p {
+  color: #fff !important;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.footer .btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 12px;
+  transition: var(--transition);
+  user-select: none;
+  font-size: 16px;
+  color: var(--dark-text);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer .btn img {
+  margin-right: 6px;
+}
+
+.date.today .miqaat {
+  background: #fecd1a;
+}
+.miqaat {
+  height: 5px;
+  width: 5px;
+  background: #fdb827;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 7px;
+}
+
+.footer .btn:hover {
+  background: rgba(134, 159, 178, 0.1);
+}
+
+.miqaatDetails {
+  background: #fff;
+  border-radius: 12px;
+  margin-top: 20px;
+  padding: 12px;
+  color: #9598a7;
+  text-align: center;
+  box-shadow: 0px 0px 12px -5px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+.miqaatDetails-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.miqaatDetails-date p:nth-child(2) {
+  font-weight: 400;
+}
+.miqaatDetails-date p:nth-child(1) {
+  margin-right: 6px;
+}
+
+.helper.show {
+  visibility: visible;
+}
+
+.helper {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  height: 40px;
+  width: 350px;
+  background: var(--dark-secondary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 12px;
+}
+.helper p {
+  color: #fff;
+}
+.helper button {
+  height: 40px;
+  background: transparent;
+  border: none;
+  font-size: 11px;
+  color: #fff;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.helper button:hover {
+  background: rgba(134, 159, 178, 0.1);
+}
+.helper.hide {
+  visibility: hidden;
+}
+
+/* Dark  */
+.App.dark {
+  background: #16213e;
+}
+
+.App.dark .Calendar-card {
+  background: #1f4068;
+}
+
+.App.dark .weekLetters,
+.App.dark .header-right .icon-reset,
+.App.dark .btn,
+.App.dark .header-left h1 {
+  color: #fff;
+}
+
+.App.dark .date.filler p {
+  color: #9598a7;
+}
+.App.dark .date p {
+  color: #d1d8dd;
+}
+
+.App.dark .date:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.App.dark .header-right .btn {
+  background: #ff577f;
+}
+
+.App.dark .miqaatDetails {
+  background: #1f4068;
+  color: #fff;
+}
+
+/* Media Quieries */
+@media only screen and (max-width: 1028px) {
+  .Calendar-card,
+  .miqaatDetails {
+    width: 800px;
+  }
+}
+@media only screen and (max-width: 840px) {
+  .Calendar-card,
+  .miqaatDetails {
+    width: 700px;
+  }
+  .helper {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@media only screen and (max-width: 760px) {
+  .Calendar-card,
+  .miqaatDetails {
+    width: 700px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .Calendar-card,
+  .miqaatDetails {
+    width: 650px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .Calendar-card,
+  .miqaatDetails {
+    width: 550px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .Calendar-card,
+  .miqaatDetails {
+    width: 650px;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .Calendar-card,
+  .miqaatDetails {
+    width: 500px;
+  }
+
+  .Calendar-card .header-left h1 {
+    font-size: 18px;
+  }
+  .header-right .btn {
+    height: 30px;
+    width: 30px;
+    font-size: 20px;
+  }
+  .date {
+    height: 30px;
+    width: 30px;
+  }
+  .miqaat {
+    height: 3px;
+    width: 3px;
+    bottom: 0px;
+  }
+}
+@media only screen and (max-width: 490px) {
+  .Calendar-card,
+  .miqaatDetails {
+    width: 400px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .Calendar-card,
+  .miqaatDetails {
+    width: 350px;
+  }
+
+  .Calendar-card .header-left h1 {
+    font-size: 13px;
+  }
+  .header-right .btn {
+    height: 24px;
+    width: 24px;
+    font-size: 14px;
+  }
+  .date {
+    height: 25px;
+    width: 25px;
+  }
+  .date p {
+    font-size: 15px;
+  }
+  .footer .btn {
+    font-size: 12px;
+  }
+  .weekLetters div p {
+    font-size: 14px;
+  }
+  .miqaatDetails p {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .Calendar-card,
+  .miqaatDetails {
+    width: 300px;
+  }
+  .Calendar-card {
+    width: 300px;
+    padding: 24px;
+    padding-bottom: 12px;
+  }
+
+  .header-right .btn {
+    height: 15px;
+    width: 15px;
+    font-size: 10px;
+  }
+  .date {
+    height: 25px;
+    width: 25px;
+  }
+  .date p {
+    font-size: 12px;
+  }
+  .miqaat {
+    height: 3px;
+    width: 3px;
+    bottom: 0px;
+  }
+  .footer .btn {
+    font-size: 10px;
+  }
+  .weekLetters div p {
+    font-size: 11px;
+  }
+  .header-right .icon-reset {
+    margin-left: 16px;
+  }
+  .header-right .icon-left {
+    margin-right: 6px;
+  }
+}
